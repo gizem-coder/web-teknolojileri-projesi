@@ -8,7 +8,6 @@
 
   ##### Ana Sayfada
     - Diğer sayfalara ulaşılabilicek menü
-    - Site ha
     
   ##### Hakkında Sayfası
     - Kişisel ilgi alanlarım vb. bilgiler
