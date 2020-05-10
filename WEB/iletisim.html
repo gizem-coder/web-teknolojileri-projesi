@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
+<link href="http://bxslider.com/lib/jquery.bxslider.css" rel="stylesheet" /> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="menu.css">
+  <title>İLETİŞİM</title>
+    <style>
+        body{
+            background-color: var(--overlay-color);
+        }
+    </style>
+    
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="css/style.css">
+    
+      <script>
+
+    function temizle()
+    {
+      document.getElementById("iletisimFormu").reset();
+    }
+
+    function uyariMesaji(elementId, uyari) 
+    {
+       document.getElementById(elementId).innerHTML = uyari;
+    } 
+
+    function formKontrol()
+    { 
+        
+        var isim = document.iletisimFormu.isim.value;
+        var soyisim = document.iletisimFormu.soyisim.value;
+        var email=document.iletisimFormu.email.value;
+        var sehir = document.iletisimFormu.sehir.value;
+        var cinsiyet = document.iletisimFormu.cinsiyet.value;
+       
+        var isimuyari = soyisimuyari = sehiruyari = emailuyari = cinsiyetuyari = true;  
+        
+        if(isim=="")
+        {
+          uyariMesaji("isimuyari", "*Bu alan doldurulmak zorunda");
+        }else {
+          uyariMesaji("isimuyari", "");
+          isimuyari = false;
+        }
+
+        if(soyisim=="")
+        {
+           uyariMesaji("soyisimuyari","*Bu alan doldurulmak zorunda");
+        }else {
+           uyariMesaji("soyisimuyari", "");
+           soyisimuyari = false;
+        }
+
+        if(sehir == "") 
+        {
+           uyariMesaji("sehiruyari","*Bu alan doldurulmak zorunda");
+
+        } else {
+            uyariMesaji("sehiruyari", "");
+            sehiruyari = false;
+        }
+        
+        if(cinsiyet== "")
+        {
+          uyariMesaji("cinsiyetuyari","*Bu alan doldurulmak zorunda");
+        } else {
+          uyariMesaji("cinsiyetuyari", "");
+          cinsiyetuyari = false;
+        }
+
+        if(email=="")
+        {
+          uyariMesaji("emailuyari","*Bu alan doldurulmak zorunda");
+        }
+        else 
+        { 
+          var kural=/^\S+@\S+\.\S+$/;
+          if(!kural.test(email))
+          {
+             uyariMesaji("emailuyari","*Lütfen geçerli bir mail adresi giriniz!");
+          } else
+          {
+              uyariMesaji("emailuyari", "");
+              emailuyari = false;
+          }
+        }
+       
+
+        if((isimuyari || soyisimuyari || emailuyari || sehiruyari || cinsiyetuyari) == true) 
+        {
+            return false;
+        } 
+        
+    }
+  </script>
+    
+</head>
+    <body>
+   
+       
+          <div class="menu-wrap">
+    <input type="checkbox" class="toggler">
+    <div class="hamburger"><div></div></div>
+    <div class="menu">
+      <div>
+        <div>
+          <ul>
+		   <li><a href="login.html">LOGİN</a></li>
+               <li><a href="hakkimda.html">HAKKIMDA</a></li>
+            <li><a href="ozgecmis.html">ÖZGEÇMİŞ</a></li>
+            <li><a href="sehrim.html">ŞEHRİM</a></li>
+            <li><a href="mirasim.html">MİRASIMIZ</a></li>
+            <li><a href="iletisim.html">İLETİŞİM</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+        
+        
+ <section id="iletisim" class="mt-5">
+    <div class="overlay">
+    <div class="container">
+        <div class="row">
+      <div class="col">
+        <form id="iletisimFormu" name="iletisimFormu" action="iletisimkontrol.php"  onsubmit="return formKontrol()" method="post">
+          <table>
+              <th>KAYIT FORMU</th>
+            <tr>
+              <td><label>İsim</label></td>
+            </tr>
+            <tr>
+              <td> <input name="isim" id="isim" placeholder="İsim" type="text"> </td>
+            </tr>
+            <tr>
+              <td><span id="isimuyari"></span></td>
+            </tr>
+            <tr>
+              <td><label>Soyisim</label></td>
+            </tr>
+            <tr>
+              <td> <input name="soyisim" id="soyisim" placeholder="Soyisim" type="text"> </td>
+            </tr>
+            <tr>
+              <td><span id="soyisimuyari"></span></td>
+            </tr>
+            <tr>
+              <td><label>Email</label></td>
+            </tr>
+  
+            <tr>
+              <td> <input name="email" id="email" placeholder="Email" type="text"> </td>
+            </tr>
+            <tr>
+              <td><span id="emailuyari"></span></td>
+            </tr>
+  
+            <tr>
+              <td><label>Şehir</label></td>
+            </tr>
+            <tr>
+              <td>
+                <select name="sehir" id="sehir">
+                  <option value=""></option>
+                  <option value="Adana">Adana</option>
+                  <option value="Adıyaman">Adıyaman</option>
+                  <option value="Afyonkarahisar">Afyonkarahisar</option>
+                  <option value="Ağrı">Ağrı</option>
+                  <option value="Amasya">Amasya</option>
+                  <option value="Ankara">Ankara</option>
+                  <option value="Antalya">Antalya</option>
+                  <option value="Artvin">Artvin</option>
+                  <option value="Aydın">Aydın</option>
+                  <option value="Balıkesir">Balıkesir</option>
+                  <option value="Bilecik">Bilecik</option>
+                  <option value="Bingöl">Bingöl</option>
+                  <option value="Bitlis">Bitlis</option>
+                  <option value="Bolu">Bolu</option>
+                  <option value="Burdur">Burdur</option>
+                  <option value="Bursa">Bursa</option>
+                  <option value="Çanakkale">Çanakkale</option>
+                  <option value="Çankırı">Çankırı</option>
+                  <option value="Çorum">Çorum</option>
+                  <option value="Denizli">Denizli</option>
+                  <option value="Diyarbakır">Diyarbakır</option>
+                  <option value="Edirne">Edirne</option>
+                  <option value="Elazığ">Elazığ</option>
+                  <option value="Erzincan">Erzincan</option>
+                  <option value="Erzurum">Erzurum</option>
+                  <option value="Eskişehir">Eskişehir</option>
+                  <option value="Gaziantep">Gaziantep</option>
+                  <option value="Giresun">Giresun</option>
+                  <option value="Gümüşhane">Gümüşhane</option>
+                  <option value="Hakkâri">Hakkâri</option>
+                  <option value="Hatay">Hatay</option>
+                  <option value="Isparta">Isparta</option>
+                  <option value="Mersin">Mersin</option>
+                  <option value="İstanbul">İstanbul</option>
+                  <option value="İzmir">İzmir</option>
+                  <option value="Kars">Kars</option>
+                  <option value="Kastamonu">Kastamonu</option>
+                  <option value="Kayseri">Kayseri</option>
+                  <option value="Kırklareli">Kırklareli</option>
+                  <option value="Kırşehir">Kırşehir</option>
+                  <option value="Kocaeli">Kocaeli</option>
+                  <option value="Konya">Konya</option>
+                  <option value="Kütahya">Kütahya</option>
+                  <option value="Malatya">Malatya</option>
+                  <option value="Manisa">Manisa</option>
+                  <option value="Kahramanmaraş">Kahramanmaraş</option>
+                  <option value="Mardin">Mardin</option>
+                  <option value="Muğla">Muğla</option>
+                  <option value="Muş">Muş</option>
+                  <option value="Nevşehir">Nevşehir</option>
+                  <option value="Niğde">Niğde</option>
+                  <option value="Ordu">Ordu</option>
+                  <option value="Rize">Rize</option>
+                  <option value="Sakarya">Sakarya</option>
+                  <option value="Samsun">Samsun</option>
+                  <option value="Siirt">Siirt</option>
+                  <option value="Sinop">Sinop</option>
+                  <option value="Sivas">Sivas</option>
+                  <option value="Tekirdağ">Tekirdağ</option>
+                  <option value="Tokat">Tokat</option>
+                  <option value="Trabzon">Trabzon</option>
+                  <option value="Tunceli">Tunceli</option>
+                  <option value="Şanlıurfa">Şanlıurfa</option>
+                  <option value="Uşak">Uşak</option>
+                  <option value="Van">Van</option>
+                  <option value="Yozgat">Yozgat</option>
+                  <option value="Zonguldak">Zonguldak</option>
+                  <option value="Aksaray">Aksaray</option>
+                  <option value="Bayburt">Bayburt</option>
+                  <option value="Karaman">Karaman</option>
+                  <option value="Kırıkkale">Kırıkkale</option>
+                  <option value="Batman">Batman</option>
+                  <option value="Şırnak">Şırnak</option>
+                  <option value="Bartın">Bartın</option>
+                  <option value="Ardahan">Ardahan</option>
+                  <option value="Iğdır">Iğdır</option>
+                  <option value="Yalova">Yalova</option>
+                  <option value="Karabük">Karabük</option>
+                  <option value="Kilis">Kilis</option>
+                  <option value="Osmaniye">Osmaniye</option>
+                  <option value="Düzce">Düzce</option>
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td><span id="sehiruyari"></span></td>
+            </tr>
+            <tr>
+              <tr>
+                <td><label>Cinsiyet</label></td>
+              </tr>
+              <td>
+                <input name="cinsiyet" type="radio" value="kadin" > Kadın
+                <input name="cinsiyet" type="radio" value="erkek"> Erkek
+              </td>
+              <tr>
+                <td><span id="cinsiyetuyari"></span></td>
+              </tr>
+            
+            <tr>
+              <td><label>Hobiler</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input name="hobiler[]" type="checkbox" value="spor" > Spor
+                   <input name="hobiler[]" type="checkbox" value="dans" > Dans
+                <input name="hobiler[]" type="checkbox" value="sinema" > Sinema 
+                <input name="hobiler[]" type="checkbox" value="muzik" > Müzik
+                <input name="hobiler[]" type="checkbox" value="kitap" > Kitap
+              </td>
+            </tr>
+            <tr>
+              <td><input type="submit" value="Gönder" ></td>
+              <td><input type="button" value="Temizle" onclick="temizle()"></td>
+            </tr>
+  
+          </table>
+        </form>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"> </script> 
+        
+        
+    </body>
+</html>
